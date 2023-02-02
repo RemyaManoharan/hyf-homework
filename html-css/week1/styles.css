@@ -1,0 +1,186 @@
+:root {
+  --primary-color: #3c096c;
+  --primary-text-color: #e1d7c6;
+  --secondary-color: #e5d9f2;
+  --secondary-text-color: #03001c;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+/* main cotainer */
+.container {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+
+/* left container */
+.left-container {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  flex: 0.5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0;
+  gap: 20px;
+  flex-direction: column;
+  min-width: 300px;
+}
+/* profile picture and name div */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+.image-box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* profile picture */
+.image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my-name h2 {
+  padding-top: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+.my-name p {
+  text-align: center;
+  font-weight: 400;
+}
+/* left container headings */
+.title h3 {
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-left: 0;
+}
+
+/* contact information div */
+.contact-info td {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.skills {
+  width: 100%;
+  padding-top: 40px;
+}
+/* skills div */
+.skills h3 {
+  margin-bottom: 20px;
+  padding-left: 15%;
+  padding-bottom: 10px;
+}
+.skills ul {
+  position: relative;
+  padding-left: 15%;
+}
+
+.skills ul li {
+  margin: 10px;
+}
+/* language div */
+.languages ul li {
+  list-style: none;
+  line-height: 200%;
+}
+
+.languages .percent {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #001233;
+  display: block;
+  margin-top: 5px;
+}
+.languages .percent div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #f0ebd8;
+}
+/* right container */
+.right-container {
+  flex: 1.5;
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+/* professionary summary */
+.about-me {
+  width: 100%;
+  margin-bottom: 50px;
+  margin-left: 10px;
+  padding-right: 10px;
+}
+/* right container main titles */
+.title-right {
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.about-me p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: justify;
+}
+/* education and experience div */
+.box {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 10px;
+  gap: 20px;
+}
+
+.year-company {
+  line-height: 150%;
+  width: 150px;
+  min-width: 150px;
+}
+.year-company h5 {
+  font-weight: 600;
+  font-size: 14px;
+}
+.designation {
+  width: 650px;
+}
+
+.designation ul li {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+}
+/* interests div */
+.interests ul li {
+  line-height: 150%;
+}
