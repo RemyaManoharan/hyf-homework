@@ -1,0 +1,281 @@
+:root {
+  --text-color: #7f8487;
+  --heading-color: black;
+  --background-color: #ffffff;
+  --footer-color: #645cbb;
+  --footer-text-color: #ffffff;
+}
+
+body,
+html {
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  padding-left: 20px;
+  background-color: var(--background-color);
+}
+
+header {
+  height: 150px;
+}
+
+.title-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.title {
+  padding-top: 10px;
+  padding-left: 100px;
+}
+
+.title p {
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-color);
+}
+
+.menu-container {
+  height: 50px;
+  width: 100%;
+  padding-bottom: 50px;
+  border-top: 0.2px solid #e8e2e2;
+}
+
+.menu-container ul {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  text-decoration: none;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  padding-top: 20px;
+  padding-left: 100px;
+  margin: 0;
+  gap: 20px;
+  font-weight: 600;
+}
+
+.menu-container ul > li a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--heading-color);
+}
+
+.menu-container ul > li a:hover,
+:focus {
+  color: var(--text-color);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.image-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url("../image/image0.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  margin-top: 10px;
+}
+
+.description-container {
+  width: 80%;
+  height: 550px;
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  justify-content: center;
+}
+
+.left-description {
+  height: 100%;
+  flex: 0.6;
+}
+
+.left-description p {
+  display: block;
+}
+
+.right-description {
+  height: 100%;
+  flex: 1.4;
+}
+.references {
+  height: 650px;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 50px;
+  padding-left: 80px;
+  margin-left: 10px;
+}
+
+.gallery {
+  height: 100%;
+  flex: 0.4;
+}
+
+.logotypes {
+  height: 100%;
+  flex: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4em;
+}
+
+.icons .image {
+  width: 130px;
+  height: 130px;
+}
+
+.footer-style {
+  background-color: var(--footer-color);
+  color: var(--footer-text-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 50px 70px;
+}
+
+.map {
+  width: 200px;
+  height: 200px;
+}
+
+.find-us ul {
+  list-style: none;
+  line-height: 200%;
+}
+
+@media only screen and (max-width: 800px) {
+  body,
+  html {
+    font-size: 12px;
+  }
+
+  .header {
+    height: 500px;
+  }
+  .menu-container {
+    padding: 0;
+    height: 250px;
+  }
+
+  .menu-container ul {
+    height: 250px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    line-height: 100%;
+    font-size: 5px;
+    margin: 0;
+    gap: 10px;
+  }
+
+  main {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 10%;
+  }
+
+  .image-container {
+    height: 200px;
+  }
+
+  .description-container {
+    width: 80%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-bottom: 70px;
+  }
+
+  .references {
+    width: 80%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
+    align-items: flex-start;
+    margin-bottom: 70px;
+    column-gap: 10px;
+    padding-left: 10px;
+  }
+
+  .gallery {
+    height: 10%;
+  }
+
+  .logotypes {
+    height: 80%;
+  }
+  .icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+  }
+
+  .icons .image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .footer-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 50px;
+    padding: 20px 70px;
+  }
+}
