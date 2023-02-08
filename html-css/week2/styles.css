@@ -99,7 +99,8 @@ main {
 
 .image-container {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
-    url("../image/image0.jpg");
+    url(https://drive.google.com/uc?=export=view&id=1seGWQ5XdH3u5xgA_yfoBfY1OeIkcWatf);
+  /* url("../image/image0.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
