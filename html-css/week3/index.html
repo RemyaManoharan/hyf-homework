@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- google fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <title>Payment</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <header>
+        <h1>FASHION TODAY</h1>
+      </header>
+      <main>
+        <!-- ORDER SUMMARY SECTION -->
+        <section class="order-summary">
+          <div class="summary-head">
+            <h2>Order Summary</h2>
+          </div>
+          <div class="summary-total">
+            <div class="items item1">
+              <span>Total</span> <span>$333/month</span>
+            </div>
+            <hr class="line" />
+            <div class="items item2"><span>Total</span> <span>$100</span></div>
+          </div>
+        </section>
+        <!-- PAYMENT METHOD SECTION -->
+        <form action="index2.html" method="GET">
+          <fieldset class="payment-method">
+            <div class="payment-head">
+              <h3>Payment Method</h3>
+            </div>
+
+            <div class="selection-box">
+              <label class="labl">
+                <input
+                  type="radio"
+                  name="payment-type"
+                  value="card"
+                  checked="checked"
+                />
+                <div class="box1">
+                  <img src="creditcard.jpg" alt="creditcard picture" />
+                  <span>Credit/Debit</span>
+                </div>
+              </label>
+
+              <label class="labl">
+                <input type="radio" name="payment-type" value="pay-pal" />
+                <div class="box1">
+                  <img src="pp.jpg" alt="pay pal picture" />
+                  <span>Pay Pal</span>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+          <!-- Card information form -->
+          <section class="card-info">
+            <div class="info-head">
+              <h3>Card Info</h3>
+            </div>
+
+            <div class="card-details">
+              <div class="card-item">
+                <label for="card-no">Card Number</label>
+
+                <div class="input-container">
+                  <input
+                    id="card-no"
+                    type="tel"
+                    inputmode="numeric"
+                    pattern="[0-9\s]{13,19}"
+                    autocomplete="cc-number"
+                    maxlength="19"
+                    placeholder="1234 1234 1234 1234"
+                    required
+                  />
+                  <i class="far fa-question-circle"></i>
+                </div>
+              </div>
+              <div class="card-item expiry-cvv-wrapper">
+                <label for="expiry">Expiry date</label>
+                <input
+                  type="text"
+                  pattern="(?:0[1-9]|1[0-2])/[0-9]{2}"
+                  placeholder="mm/yy"
+                />
+              </div>
+              <div class="card-item expiry-cvv-wrapper">
+                <label for="cvv">Security Code</label>
+                <div class="input-container">
+                  <input
+                    id="cvv"
+                    type="number"
+                    max="999"
+                    pattern="([0-9]|[0-9]|[0-9])"
+                    name="cvv"
+                    placeholder="cvv"
+                    required
+                  />
+                  <i class="far fa-question-circle"></i>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- BUY NOW BUTTON -->
+          <section class="button-wrapper">
+            <div class="submit-button">
+              <input type="submit" value="Buy Now" />
+              <span class="help">Need help?</span>
+            </div>
+          </section>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
