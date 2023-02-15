@@ -184,6 +184,12 @@ h3 {
   align-items: center;
   justify-content: space-between;
 }
+.expiry-cvv-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
 .card-item label {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
@@ -282,9 +288,9 @@ h3 {
   .container {
     height: 100%;
 
-    width: 50%;
+    width: 100%;
     margin: auto;
-    min-width: 300px;
+    min-width: 500px;
   }
   header {
     width: 100%;
@@ -301,7 +307,7 @@ h3 {
     height: 171px;
   }
   .line {
-    width: 280px;
+    width: 100%;
   }
   form {
     width: 100%;
@@ -331,6 +337,7 @@ h3 {
     justify-content: space-between;
     padding-left: 20px;
   }
+
   .card-item label {
     font-weight: 600;
     font-size: 16px;
@@ -344,21 +351,28 @@ h3 {
     line-height: 20px;
   }
   .card-item input[type="tel"] {
-    width: 200px;
+    width: 260px;
   }
   .card-item input[type="number"] {
-    width: 70px;
+    width: 110px;
   }
   .card-item input[type="text"] {
     width: 120px;
   }
   .card-details {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+
+    align-items: center;
+  }
+
+  .expiry-cvv-wrapper {
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 20px;
-    flex-wrap: wrap;
-    align-items: space-around;
+    gap: 10px;
   }
   /* button */
 
