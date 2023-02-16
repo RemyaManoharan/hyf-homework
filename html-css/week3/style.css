@@ -1,6 +1,6 @@
 :root {
   --body-color: white;
-  --background-colr: #f3f6fb;
+  --background-colr: #939393;
   --heading-color: #ffffff;
   --label-color: #939393;
 }
@@ -21,9 +21,8 @@ html {
 .container {
   height: 100%;
 
-  width: 55%;
+  width: 70%;
   margin: auto;
-  max-width: 800px;
 }
 
 header {
@@ -36,7 +35,7 @@ h1 {
   padding-top: 30px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 70px;
   line-height: 85.33px;
   background: linear-gradient(91.07deg, #fe4e9b 32.21%, #fd7b46 67.08%);
@@ -76,7 +75,7 @@ h2 {
   gap: 5px;
 }
 .line {
-  width: 100%;
+  width: 830px;
   height: 1px;
 
   background: #ffffff;
@@ -129,8 +128,8 @@ h3 {
   align-items: flex-start;
 }
 .selection-box .box1 {
-  width: 370px;
-  height: 110px;
+  width: 380px;
+  height: 91px;
   /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
@@ -151,7 +150,7 @@ h3 {
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
 }
-.labl > input:checked + div {
+.labl > input:checked + span {
   /* (RADIO CHECKED) DIV STYLES */
   border: 4px solid #fe4e9b;
 }
@@ -184,12 +183,6 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-.expiry-cvv-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 10px;
 }
 .card-item label {
   font-family: "Montserrat", sans-serif;
@@ -264,7 +257,7 @@ h3 {
   border: none;
   padding: 15px 30px;
   font-size: 16px;
-  border-radius: 68px;
+  border-radius: 20px;
   width: 326px;
   height: 68px;
 }
@@ -289,15 +282,16 @@ h3 {
   .container {
     height: 100%;
 
-    width: 60%;
+    width: 50%;
     margin: auto;
-    min-width: 500px;
+    min-width: 300px;
   }
   header {
     width: 100%;
     height: 145px;
   }
   h1 {
+    font-weight: 400;
     font-size: 30px;
 
     line-height: 37px;
@@ -307,17 +301,17 @@ h3 {
     height: 171px;
   }
   .line {
-    width: 100%;
+    width: 280px;
   }
   form {
     width: 100%;
     height: 700px;
   }
   .selection-box {
-    gap: 40px;
+    gap: 10px;
   }
   .selection-box .box1 {
-    width: 150px;
+    width: 120px;
     height: 110px;
   }
   .box1 span {
@@ -336,9 +330,7 @@ h3 {
     align-items: centert;
     justify-content: space-between;
     padding-left: 20px;
-    padding-top: 20px;
   }
-
   .card-item label {
     font-weight: 600;
     font-size: 16px;
@@ -352,33 +344,26 @@ h3 {
     line-height: 20px;
   }
   .card-item input[type="tel"] {
-    width: 260px;
+    width: 200px;
   }
   .card-item input[type="number"] {
-    width: 110px;
+    width: 70px;
   }
   .card-item input[type="text"] {
     width: 120px;
   }
   .card-details {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 30px;
-
-    align-items: center;
-  }
-
-  .expiry-cvv-wrapper {
-    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 20px;
+    flex-wrap: wrap;
+    align-items: space-around;
   }
   /* button */
 
   .submit-button input[type="submit"] {
-    width: 260px;
+    width: 240px;
     height: 68px;
   }
 }

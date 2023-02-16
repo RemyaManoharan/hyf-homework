@@ -48,25 +48,31 @@
             </div>
 
             <div class="selection-box">
-              <label class="labl">
+              <label for="card" class="labl">
                 <input
                   type="radio"
                   name="payment-type"
                   value="card"
+                  id="card"
                   checked="checked"
                 />
-                <div class="box1">
+                <span class="box1">
                   <img src="creditcard.jpg" alt="creditcard picture" />
                   <span>Credit/Debit</span>
-                </div>
+                </span>
               </label>
 
-              <label class="labl">
-                <input type="radio" name="payment-type" value="pay-pal" />
-                <div class="box1">
+              <label for="pay-pal" class="labl">
+                <input
+                  type="radio"
+                  name="payment-type"
+                  id="pay-pal"
+                  value="pay-pal"
+                />
+                <span class="box1">
                   <img src="pp.jpg" alt="pay pal picture" />
                   <span>Pay Pal</span>
-                </div>
+                </span>
               </label>
             </div>
           </fieldset>
@@ -94,29 +100,27 @@
                   <i class="far fa-question-circle"></i>
                 </div>
               </div>
-              <div class="expiry-cvv-wrapper">
-                <div class="card-item">
-                  <label for="expiry">Expiry date</label>
+              <div class="card-item expiry-cvv-wrapper">
+                <label for="expiry">Expiry date</label>
+                <input
+                  type="text"
+                  pattern="(?:0[1-9]|1[0-2])/[0-9]{2}"
+                  placeholder="mm/yy"
+                />
+              </div>
+              <div class="card-item expiry-cvv-wrapper">
+                <label for="cvv">Security Code</label>
+                <div class="input-container">
                   <input
-                    type="text"
-                    pattern="(?:0[1-9]|1[0-2])/[0-9]{2}"
-                    placeholder="mm/yy"
+                    id="cvv"
+                    type="number"
+                    max="999"
+                    pattern="([0-9]|[0-9]|[0-9])"
+                    name="cvv"
+                    placeholder="cvv"
+                    required
                   />
-                </div>
-                <div class="card-item">
-                  <label for="cvv">Security Code</label>
-                  <div class="input-container">
-                    <input
-                      id="cvv"
-                      type="number"
-                      max="999"
-                      pattern="([0-9]|[0-9]|[0-9])"
-                      name="cvv"
-                      placeholder="cvv"
-                      required
-                    />
-                    <i class="far fa-question-circle"></i>
-                  </div>
+                  <i class="far fa-question-circle"></i>
                 </div>
               </div>
             </div>
