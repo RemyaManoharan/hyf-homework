@@ -1,22 +1,22 @@
 //Future Age Calculator
 console.log("Sample program to find future age");
-let yearOfBirth=1987;
-let yearFuture=2027;
-let age = yearFuture-yearOfBirth;
+const yearOfBirth=1987;
+const yearFuture=2027;
+const age = yearFuture-yearOfBirth;
 console.log(`You will be ${age} years old in ${yearFuture}`);
 
 // Dog Age Calculator
-let dogYearOfBirth=1975;
-let dogYearFuture=2045;
+const dogYearOfBirth=1975;
+const dogYearFuture=2045;
 let dogYear;
- 
+
 function dogYearcalculator(shouldShowResultInDogYears)
 {
-if(shouldShowResultInDogYears===true)
+if(shouldShowResultInDogYears)
 {
 dogYear=(dogYearFuture-dogYearOfBirth)/7;
 }
-else if(shouldShowResultInDogYears===false)
+else
 
 {
     dogYear=dogYearFuture-dogYearOfBirth;
@@ -66,7 +66,7 @@ console.log(juliaResult);
 // Startup name generator)
 
 const firstWords=[ "Easy", "Awesome", "Corporate","Entri","Porch","SpringBoard","Infoyis","InApp","AppIva","ClassPlus"];
-const secondWords=["Hub","Services","Consultancy","Technology","DataBricks","InstaCart","SpaceX","Games","EduTech","Company"];   
+const secondWords=["Hub","Services","Consultancy","Technology","DataBricks","InstaCart","SpaceX","Games","EduTech","Company"];
 let startupName;
 const randomNumber = Math.floor(Math.random() * 10);
 startupName=firstWords[randomNumber].concat(" ",secondWords[randomNumber]);
