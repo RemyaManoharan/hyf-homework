@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "order_name": "pizza",
+      "id": 122,
+      "price": 125,
+      "drinks": [
+        "lemonde",
+        "vanilla_mocha",
+        "strawberry_shake",
+        "vanila_shake"
+      ],
+      "order_extrats": "cheese"
+    },
+    {
+      "order_name": "burger",
+      "id": 123,
+      "price": 120,
+      "drinks": [
+        "lemonde",
+        "vanilla_mocha",
+        "strawberry_shake",
+        "vanila_shake"
+      ],
+      "order_extrats": "lettuce"
+    },
+    {
+      "order_name": "burger",
+      "id": 123,
+      "price": 120,
+      "drinks": [
+        "lemonde",
+        "vanilla_mocha",
+        "strawberry_shake",
+        "vanila_shake"
+      ],
+      "order_extrats": "lettuce"
+    }
+  ]
+}
