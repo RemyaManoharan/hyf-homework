@@ -4,13 +4,21 @@ const locationBtnTag = document.getElementById("search");
 const messageTag = document.getElementById("message");
 const dispalyInfo = document.getElementById("weatherinfo-wrapper");
 
+const saveLocationToLocalStorage = (location) => {
+  localStorage.setItem("savedLocation", JSON.stringify(location));
+};
+
+const getSavedLocationFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem("savedLocation"));
+};
+
 // eventlistner for submit button
 btnTag.addEventListener("click", async (e) => {
   e.preventDefault();
   try {
     messageTag.innerText = "";
     const geoCityLocation = await getCityLocation(cityTag.value);
-
+    saveLocationToLocalStorage(geoCityLocation);
     const result = await getWeatherInfo(
       geoCityLocation.lat,
       geoCityLocation.lon
@@ -27,13 +35,17 @@ locationBtnTag.addEventListener("click", async (e) => {
   try {
     messageTag.innerHTML = "Getting current location...";
     const location = await getCurrentLocation();
+
     const result = await getWeatherInfo(location.latitude, location.longitude);
+    const locations = { lat: location.latitude, lon: location.longitude };
+    saveLocationToLocalStorage(locations);
     renderWeatherInfo(result);
   } catch (err) {
     //error.innerText = "unable to get current location";
     console.log("The error" + err);
   }
 });
+
 const getCurrentLocation = async () => {
   try {
     const position = await new Promise((resolve, reject) => {
@@ -60,16 +72,19 @@ const getCityLocation = async (cityname) => {
     const city = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&limit=1&appid=a97358faa2b07b8bfa9e60a679c71b47`
     );
-
     const cityData = await city.json();
-    //console.log(cityData);
+    if (!cityData || cityData.length === 0) {
+      throw new Error("City not found");
+    }
     const { lat, lon } = cityData[0];
     console.log(cityData[0]);
     return { lat, lon };
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
+
 // using lat,lon from above function to get weather info
 const getWeatherInfo = async (lat, lon) => {
   try {
@@ -97,21 +112,26 @@ const renderWeatherInfo = (data) => {
   const time = showTime();
   headTag.innerHTML = time;
   city1.innerHTML = `${data.name}`;
-  temperature.innerHTML = `${data.main.temp.toFixed(0)}°C`;
+  temperature.innerHTML = `${Math.round(data.main.temp)}°C`;
   icon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
   speed.innerHTML = `Wind Speed : ${data.wind.speed}m/s`;
   cloudiness.innerHTML = `Cloudiness : ${data.clouds.all}%`;
-
   const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
     "en-US"
   );
   sunrise.innerHTML = `Sunrise : ${sunriseTime}`;
-
   const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString(
     "en-US"
   );
   sunset.innerHTML = `Sunset : ${sunsetTime}`;
 };
+
+const savedLocation = getSavedLocationFromLocalStorage();
+if (savedLocation) {
+  getWeatherInfo(savedLocation.lat, savedLocation.lon).then((result) => {
+    renderWeatherInfo(result);
+  });
+}
 function showTime() {
   const currentdate = new Date();
   const datetime =
