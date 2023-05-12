@@ -18,9 +18,7 @@ getAuthors();
 // the data we got is here a object havings keys 'entries','size', 'links'
 
 const displayAuthors = async (books) => {
-  const titles = books.map((book) => {
-    return book.title;
-  });
+  const titles = books.map(({ title }) => title);
   titles.forEach((title) => {
     const litag = document.createElement("li");
     litag.innerHTML = title;

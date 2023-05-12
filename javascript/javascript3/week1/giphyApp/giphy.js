@@ -1,7 +1,7 @@
-const btnTag = document.getElementById("submit");
+import env from "./env.json" assert { type: "json" };
 
-const url =
-  "https://api.giphy.com/v1/gifs/search?api_key=mSA30PH3U1iP124OtC2BNkS9NJyiTfRC";
+const btnTag = document.getElementById("submit");
+const url = `https://api.giphy.com/v1/gifs/search?api_key=${env.apiKey}`;
 
 btnTag.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -11,7 +11,7 @@ btnTag.addEventListener("click", async (e) => {
 });
 const searchGiphy = async (term, count) => {
   try {
-    const apiKey = "mSA30PH3U1iP124OtC2BNkS9NJyiTfRC";
+    const apiKey = env.apiKey;
     const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${term}&limit=${count}`;
     const response = await fetch(apiUrl);
     const giffy = await response.json();

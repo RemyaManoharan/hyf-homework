@@ -1,3 +1,5 @@
+import env from "./env.json" assert { type: "json" };
+
 const cityTag = document.getElementById("city");
 const btnTag = document.getElementById("submit");
 const locationBtnTag = document.getElementById("search");
@@ -33,7 +35,7 @@ btnTag.addEventListener("click", async (e) => {
 locationBtnTag.addEventListener("click", async (e) => {
   e.preventDefault();
   try {
-    messageTag.innerHTML = "Getting current location...";
+    messageTag.textContent = "Getting current location...";
     const location = await getCurrentLocation();
 
     const result = await getWeatherInfo(location.latitude, location.longitude);
@@ -70,7 +72,7 @@ const getCurrentLocation = async () => {
 const getCityLocation = async (cityname) => {
   try {
     const city = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&limit=1&appid=a97358faa2b07b8bfa9e60a679c71b47`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&limit=1&appid=${env.apiKey}`
     );
     const cityData = await city.json();
     if (!cityData || cityData.length === 0) {
@@ -89,7 +91,7 @@ const getCityLocation = async (cityname) => {
 const getWeatherInfo = async (lat, lon) => {
   try {
     const weather = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a97358faa2b07b8bfa9e60a679c71b47&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${env.apiKey}&units=metric`
     );
     const data = await weather.json();
     console.log("weather info", data);
@@ -110,20 +112,20 @@ const renderWeatherInfo = (data) => {
   const headTag = document.getElementById("date-tag");
 
   const time = showTime();
-  headTag.innerHTML = time;
-  city1.innerHTML = `${data.name}`;
-  temperature.innerHTML = `${Math.round(data.main.temp)}°C`;
+  headTag.textContent = time;
+  city1.textContent = `${data.name}`;
+  temperature.textContent = `${Math.round(data.main.temp)}°C`;
   icon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-  speed.innerHTML = `Wind Speed : ${data.wind.speed}m/s`;
-  cloudiness.innerHTML = `Cloudiness : ${data.clouds.all}%`;
+  speed.textContent = `Wind Speed : ${data.wind.speed}m/s`;
+  cloudiness.textContent = `Cloudiness : ${data.clouds.all}%`;
   const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
     "en-US"
   );
-  sunrise.innerHTML = `Sunrise : ${sunriseTime}`;
+  sunrise.textContent = `Sunrise : ${sunriseTime}`;
   const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString(
     "en-US"
   );
-  sunset.innerHTML = `Sunset : ${sunsetTime}`;
+  sunset.textContent = `Sunset : ${sunsetTime}`;
 };
 
 const savedLocation = getSavedLocationFromLocalStorage();

@@ -104,19 +104,19 @@
             <h6 class="section-subtitle">See what your mood is like with</h6>
             <h6 class="section-title mb-4">The Happiness Detector</h6>
 
-            <div class="item" id="happy">
+            <div class="item">
               <i class="ti-face-smile"></i>
               <div>
                 <h5>Happy</h5>
               </div>
             </div>
-            <div class="item" id="neutral">
+            <div class="item">
               <i class="ti-flickr-alt"></i>
               <div class="mb-0">
                 <h5>Neutral</h5>
               </div>
             </div>
-            <div class="item" id="sad">
+            <div class="item">
               <i class="ti-face-sad"></i>
               <div class="mb-0">
                 <h5>Sad</h5>
@@ -138,7 +138,7 @@
               <div class="form-group">
                 <textarea
                   name="contact-message"
-                  id="textarea"
+                  id="inputMsg"
                   cols="30"
                   rows="7"
                   class="form-control form-control-lg"
@@ -146,8 +146,8 @@
                 ></textarea>
               </div>
               <button
-                type="submit"
-                id="button"
+                id="submitBtn"
+                type="button"
                 class="btn btn-primary btn-block btn-lg mt-3"
               >
                 Let's find out my mood!
@@ -156,6 +156,7 @@
           </div>
         </div>
         <div
+          id="alert-happy"
           class="alert alert-success alert-dismissible fade show"
           role="alert"
         >
@@ -170,6 +171,7 @@
           </button>
         </div>
         <div
+          id="alert-sad"
           class="alert alert-primary alert-dismissible fade show"
           role="alert"
         >
@@ -183,7 +185,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div
+          id="alert-soso"
+          class="alert alert-info alert-dismissible fade show"
+          role="alert"
+        >
           Hello Bob. You are so-so :|
           <button
             type="button"
@@ -204,6 +210,6 @@
     <!-- bootstrap affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
   </body>
 </html>
