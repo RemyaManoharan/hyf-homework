@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>Giffy App</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header>
+        <h1>Giffy searcher</h1>
+      </header>
+      <section>
+        <form class="form-section">
+          <div class="input-contaicner">
+            <input type="text" id="search-id" placeholder="search for giffy" />
+            <input type="number" id="count" placeholder="Number of giffs" />
+          </div>
+          <div class="button-container">
+            <button type="button" id="submit">Search</button>
+          </div>
+        </form>
+      </section>
+      <div id="giffy-container"></div>
+    </div>
+    <script src="giphy.js" type="module"></script>
+  </body>
+</html>
