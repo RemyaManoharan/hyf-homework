@@ -1,6 +1,6 @@
-SELECT count(id) FROM status;
+SELECT COUNT(id) FROM status;
 
-SELECT count(id) FROM task where due_date is null or 
+SELECT COUNT(id) FROM task where due_date is null or 
  STR_TO_DATE(due_date, '%Y-%m-%d %H:%i:%s') IS NULL;
 
 SELECT *
@@ -11,7 +11,7 @@ WHERE status.name = 'Done';
 SELECT *
 FROM task
 INNER JOIN status ON task.status_id = status.id
-WHERE status.name != 'Done';
+WHERE NOT status.name = 'Done';
 
 SELECT * FROM task ORDER BY created DESC;
 
