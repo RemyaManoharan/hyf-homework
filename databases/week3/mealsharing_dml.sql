@@ -1,99 +1,99 @@
-USE meal_sharing ;
+USE meal_sharing;
 -- GET ALL MEALS
-SELECT title FROM tbl_meals;
+SELECT title FROM meal;
 -- Add a new meal
-INSERT INTO tbl_meals(meal_id, title, description,meal_date, max_reservation,location,price,created_date)
-VALUES (1 , 'Italian Pasta','pasta authentic Italian dish with tomato and chicken',' 2023-05-31 18:30:00',10, 'Frankfurt', 20.99 , NOW()),
-       (2, 'Spegatti','Spegatti authentic Italian dish with tomato and beaf',' 2023-05-31 18:30:00',9, 'Nyhavn', 30.99 , NOW()),
-       (3, 'Chicken soup','Chicken soup made with chicken and corn with fresh cream and pepper',' 2023-05-31 18:30:00',15, 'Jutland', 25 , NOW());
+INSERT INTO meal (id, title, description, location, `when`, max_reservations, price, created_date) 
+VALUES 
+  (1, 'Italian Pasta', 'pasta authentic Italian dish with tomato and chicken', 'Frankfurt', '2023-05-31 18:30:00', 10, 50.99, NOW()),
+  (2, 'Spegatti', 'Spegatti authentic Italian dish with tomato and beef', 'Nyhavn', '2023-04-30 14:30:00', 9, 30.99, NOW()),
+  (3, 'Chicken soup', 'Chicken soup made with chicken and corn with fresh cream and pepper', 'Jutland', '2023-06-15 18:30:00', 15, 25, NOW());
+
  -- GET A MEAL WITH ID fx 1
-SELECT title FROM tbl_meals WHERE meal_id = 1;
+SELECT title 
+FROM meal 
+WHERE id = 1;
 -- UPDATE a meal with any id
-UPDATE tbl_meals
+UPDATE meal
 SET title = 'Chicken Pasta'
-WHERE meal_id = 1;
+WHERE id = 1;
 -- delete a meal with any id 
 DELETE 
- FROM tbl_meals
- WHERE meal_id = 2 ;
-
+FROM meal
+WHERE id = 2 ;
 -- GET ALL RESERVATIONS
-INSERT INTO tbl_reservation(reservation_id,meal_id,no_of_guests,reservation_date,status,location,contact_phno,contact_email,created_date)
-VALUES (2 ,2 ,5 , '2023-06-11 18:30:00' , 'booked','Nyhavn', '6789126711' , 'royvarghese@gmail.com' ,NOW()),
-(1 ,1 ,5 , '2023-06-15 18:30:00' , 'cancel','frankfurt', '6711345678' , 'johnabhram@gmail.com' ,NOW());
+INSERT INTO reservation (id, number_of_guests, meal_id, created_date, contact_phonenumber, contact_name, contact_email)
+VALUES (2 ,5 ,1, CURDATE(), '6789126711','Roy', 'royvarghese@gmail.com'),
+(1 ,4,2, CURDATE(), '6711345678','John' ,'johnabhram@gmail.com*');
 -- get all reservations
-SELECT * FROM
-tbl_reservation ;
+SELECT * 
+FROM reservation ;
 -- get a reservation with a id
-SELECT * FROM tbl_reservation WHERE reservation_id = 2;
+SELECT * 
+FROM reservation 
+WHERE id = 2;
 -- update a reservation with any id
-UPDATE tbl_reservation 
-SET no_of_guests = 5
-WHERE reservation_id = 2 ;
+UPDATE reservation 
+SET number_of_guests = 5
+WHERE id = 2 ;
 -- delete a reservation with any id
-DELETE FROM tbl_reservation
-WHERE reservation_id =1 ;
-
+DELETE FROM reservation
+WHERE id =1 ;
 -- get all reviews
-SELECT * FROM tbl_review;
+SELECT * FROM review;
 -- add  new reviews
-INSERT INTO tbl_review(review_id,meal_id,review_date,rating,description)
-VALUES (2,1,' 2023-05-31 18:30:00',4,'food was delicious and spicy'),
-  (1,2,' 2023-05-11 18:30:00',3,'yummy spegatti');
+INSERT INTO review (id, title, description, meal_id, stars, created_date) 
+VALUES (2,'Good','food was delicious and spicy',1,4,CURDATE()),
+  (1,'Average','yummy spegatti',2,3,CURDATE());
   -- get a review with any id 
-  SELECT * FROM tbl_review WHERE review_id = 1;
-  -- update a review specific id
-  UPDATE tbl_review 
-  SET rating = 5
-  WHERE review_id = 1;
-  -- delete review with any id
-  DELETE FROM tbl_review
-  WHERE review_id = 1;
-  
-  -- additional queries
-  -- get meals price smaller than specific price
-  SELECT meal_id,title 
-  FROM tbl_meals
-  WHERE price <= 30 ;
-  -- get meals that still has avalibale reservation
-  SELECT m.title 
-  FROM tbl_meals m
-  WHERE m.max_reservation > (SELECT COUNT(*) FROM tbl_reservation r WHERE r.meal_id = m.meal_id);
-  -- Get meals that partially match a title. 
-SELECT title FROM tbl_meals WHERE title LIKE '%pasta%';
+SELECT * 
+FROM review 
+WHERE id = 1;
+-- update a review specific id
+UPDATE review 
+SET stars = 5
+WHERE id = 1;
+-- delete review with any id
+DELETE FROM review
+WHERE id = 1;
+
+-- additional queries
+-- get meals price smaller than specific price
+SELECT id,title ,price
+FROM meal
+WHERE price <= 50 ;
+-- get meals that still has avalibale reservation
+SELECT m.title 
+FROM meal m
+WHERE m.max_reservations > (SELECT COUNT(*) FROM reservation r WHERE r.meal_id = m.id);
+-- Get meals that partially match a title. 
+SELECT title 
+FROM meal 
+WHERE title LIKE '%pasta%';
   -- get all meals that are created between two dates
 SELECT *
-FROM tbl_meals
+FROM meal
 WHERE created_date >= '2023-05-20 18:30:00' AND created_date <= '2023-06-01 18:30:00';
 -- Get only specific number of meals fx return only 5 meals
 SELECT title
-FROM tbl_meals
+FROM meal
 LIMIT 2;
 -- Get the meals that have good reviews
-SELECT 
-   tbl_meals.title, tbl_review.rating
-FROM
-    tbl_meals
-        RIGHT JOIN
-    tbl_review ON tbl_meals.meal_id = tbl_review.meal_id
-WHERE
-    rating >= 4;
+SELECT meal.title, review.stars 
+FROM  meal
+RIGHT JOIN
+    review ON meal.id = review.meal_id
+WHERE stars >= 4;
 -- Get reservations for a specific meal sorted by created_date
-SELECT 
-    m.title, r.created_date
-FROM
-    tbl_meals m
-        RIGHT JOIN
-    tbl_reservation r ON m.meal_id = r.meal_id
-WHERE
-    m.title = 'Spegatti'
+SELECT m.title, r.created_date
+FROM  meal m
+RIGHT JOIN
+    reservation r ON m.id = r.meal_id
+WHERE  m.title = 'Spegatti'
 ORDER BY created_date DESC;    
 -- Sort all meals by average number of stars in the reviews
-SELECT 
-    m.title, AVG(rating) AS avg_rating
-FROM
-    tbl_meals m
-        RIGHT JOIN
-    tbl_review rv ON m.meal_id = rv.meal_id
+SELECT m.title, AVG(stars) AS avg_rating
+FROM meal m
+RIGHT JOIN
+    review rv ON m.id = rv.meal_id
 GROUP BY m.title
-ORDER BY AVG(rating) DESC;  
+ORDER BY AVG(stars) DESC;  
