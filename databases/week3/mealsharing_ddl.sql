@@ -2,39 +2,34 @@ DROP DATABASE IF EXISTS `meal_sharing`;
 CREATE DATABASE IF NOT EXISTS `meal_sharing`;
 USE `meal_sharing`;
 
-CREATE TABLE `tbl_meals` (
-  `meal_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `meal_date` datetime NOT NULL,
-  `max_reservation` int(20) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `price` float NOT NULL DEFAULT 0,
-  `created_date` datetime NOT NULL,
-  PRIMARY KEY (`meal_id`)
+CREATE TABLE `meal` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `title` VARCHAR(30) NOT NULL,
+  `description` TEXT NOT NULL,
+  `location` VARCHAR(50) NOT NULL,
+  `when` DATETIME NOT NULL,
+  `max_reservations` INT NOT NULL,
+  `price` DECIMAL(6, 2) NOT NULL,
+  `created_date` DATE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `tbl_reservation` (
-  `reservation_id` int(10) NOT NULL AUTO_INCREMENT,
-  `meal_id` int(10) NOT NULL,
-  `no_of_guests` int(20) NOT NULL,
-  `reservation_date` datetime NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `contact_phno` varchar(255) NOT NULL,
-  `contact_email` varchar(255) NOT NULL,
-   `created_date` datetime NOT NULL,
-  PRIMARY KEY (`reservation_id`),
-  CONSTRAINT `fk_tbl_reservation_meal` FOREIGN KEY (`meal_id`) REFERENCES `tbl_meals` (`meal_id`) ON DELETE CASCADE
+CREATE TABLE `reservation` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `number_of_guests` INT NOT NULL,
+  `meal_id` INT NOT NULL,
+  `created_date` DATE NOT NULL,
+  `contact_phonenumber` VARCHAR(30) NOT NULL,
+  `contact_name` VARCHAR(50) NOT NULL,
+  `contact_email` VARCHAR(50) NOT NULL,
+  CONSTRAINT `fk_reservation_meal_id` FOREIGN KEY (`meal_id`) REFERENCES `meal` (`id`)  ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `tbl_review` (
-  `review_id` int(10) NOT NULL AUTO_INCREMENT,
-  `meal_id` int(10) NOT NULL,
- `review_date` datetime NOT NULL,
-  `rating` int(5) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`review_id`),
-  CONSTRAINT `fk_tbl_review_meal` FOREIGN KEY (`meal_id`) REFERENCES `tbl_meals` (`meal_id`) ON DELETE CASCADE
-  
+CREATE TABLE `review` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `title` VARCHAR(50) NOT NULL,
+  `description` TEXT NOT NULL,
+  `meal_id` INT NOT NULL,
+  `stars` INT NOT NULL,
+  `created_date` DATE NOT NULL,
+  CONSTRAINT `fk_review_meal_id` FOREIGN KEY (`meal_id`) REFERENCES `meal` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
