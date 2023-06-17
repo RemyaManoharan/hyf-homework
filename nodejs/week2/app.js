@@ -40,16 +40,11 @@ app.get("/search", (req, res) => {
 // GET /documents/:id
 
 app.get("/documents/:id", (req, res) => {
-  const found = documents.some(
-    (document) => document.id === parseInt(req.params.id)
-  );
-  if (found) {
-    res.json(
-      documents.filter((document) => document.id === parseInt(req.params.id))
-    );
-  } else {
-    res.status(400).json({ msg: `No member with id of ${req.params.id}` });
-  }
+  const id = req.params.id;
+  if (isNaN(id)) res.status(400).json({ msg: "Id is not a number" });
+  const document = documents.filter((doc) => doc.id === parseInt(id));
+  if (document) res.status(200).json(document);
+  else res.status(404).json({ msg: "Document does not exist" });
 });
 
 // POST/search
@@ -67,12 +62,9 @@ app.post("/search", (req, res) => {
   if (q) {
     results = results.filter((document) => {
       const documentValues = Object.values(document);
-      return documentValues.some((value) => {
-        if (typeof value === "string" && value.includes(q)) {
-          return true;
-        }
-        return false;
-      });
+      return documentValues.some(
+        (value) => typeof value === "string" && value.includes(q)
+      );
     });
   } else if (fields) {
     results = results.filter((document) => {
