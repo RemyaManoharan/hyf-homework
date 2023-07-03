@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>ScreenShot App</title>
+  </head>
+  <body>
+    <header>
+      <h1>ScreenShot App</h1>
+      <span> Get screen shot of any given URL</span>
+
+      <section class="user-task">
+        <form class="user-task-form">
+          <input type="text" id="url" name="url" placeholder="Paste url here" />
+          <button type="button" id="submitBtn">Submit</button>
+        </form>
+      </section>
+    </header>
+    <main>
+      <!-- display message to the user -->
+      <section class="user-message">
+        <p id="message"></p>
+      </section>
+      <!-- diplay screenshots -->
+      <div class="screenshot-wrapper">
+        <img src="" class="screenshot" />
+        <!-- <button id="saveBtn">Save Screenshot</button> -->
+      </div>
+      <!-- dispaly userlist of all saved screenshots -->
+
+      <div class="screenshots">
+        <h2>Saved Screenshots:</h2>
+        <ul id="screenshotList"></ul>
+      </div>
+    </main>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
