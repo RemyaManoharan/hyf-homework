@@ -1,0 +1,96 @@
+.App {
+  width: 40%;
+  margin-top: 50px;
+  background-color: #1b6b93;
+  border: none;
+  padding: 30px;
+  border-radius: 10px;
+}
+.title-container h1 {
+  text-align: center;
+  color: white;
+}
+.form-group {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  width: auto;
+}
+button {
+  margin-left: 10px;
+  background-color: transparent;
+  color: white;
+  padding: 15px 25px;
+  width: 20%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.list {
+  margin-top: 30px;
+}
+li {
+  list-style: none;
+  margin-bottom: 15px;
+  margin-left: -12px;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.list-items {
+  display: flex;
+  background-color: white;
+}
+.list-item-list {
+  flex: 1;
+}
+#complete {
+  color: green;
+}
+
+#edit {
+  color: black;
+}
+#delete {
+  color: #862b0d;
+}
+#list-item {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.list-action {
+  display: flex;
+  gap: 10px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
