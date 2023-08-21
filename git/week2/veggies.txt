@@ -1,7 +1,6 @@
 Carrot
 Beetroot
-Red Capsicums
+Red Capsicum
 Brinjal
 Brocoli
 Cabbage
-Cauliflower
